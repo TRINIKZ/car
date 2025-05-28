@@ -25,37 +25,37 @@ public class CarController {
     @GetMapping("/carros")
     public String showCarros(Model model) {
         model.addAttribute("cars", carRepository.findAll());
-        return "carros"; // você precisará criar o template carros.html
+        return "carros"; // template: carros.html
     }
 
     // Formulário de cadastro de carro
-    @GetMapping("/cadastro")
+    @GetMapping("/cadastro-carro")
     public String showCadastroForm(Model model) {
         model.addAttribute("car", new CarModel());
-        return "cadastro"; // você precisará criar o template cadastro.html
+        return "cadastro-carro"; // template renomeado para cadastro-carro.html
     }
 
     // Processar cadastro de carro
-    @PostMapping("/cadastro")
+    @PostMapping("/cadastro-carro")
     public String processCadastro(@ModelAttribute CarModel car, Model model) {
         carRepository.save(car);
         return "redirect:/carros";
     }
 
     // Formulário para editar carro
-    @GetMapping("/editar/{id}")
+    @GetMapping("/editar-carro/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
         Optional<CarModel> car = carRepository.findById(id);
         if (car.isPresent()) {
             model.addAttribute("car", car.get());
-            return "editar"; // você precisará criar o template editar.html
+            return "editar-carro"; // template renomeado para editar-carro.html
         } else {
             return "redirect:/carros";
         }
     }
 
     // Atualizar dados do carro
-    @PostMapping("/editar/{id}")
+    @PostMapping("/editar-carro/{id}")
     public String updateCar(@PathVariable Long id, @ModelAttribute CarModel updatedCar) {
         Optional<CarModel> existing = carRepository.findById(id);
         if (existing.isPresent()) {
@@ -69,7 +69,7 @@ public class CarController {
     }
 
     // Excluir carro
-    @GetMapping("/excluir/{id}")
+    @GetMapping("/excluir-carro/{id}")
     public String deleteCar(@PathVariable Long id) {
         carRepository.deleteById(id);
         return "redirect:/carros";

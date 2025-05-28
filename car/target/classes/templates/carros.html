@@ -8,7 +8,8 @@
 <body>
 <div class="container">
     <h1>Lista de Carros</h1>
-    <a class="btn" href="/cadastro">Cadastrar Novo Carro</a>
+    <a class="btn" th:href="@{/cadastro-carro}">Cadastrar novo carro</a>
+
     <table>
         <thead>
         <tr>
@@ -26,8 +27,8 @@
             <td th:text="${car.modelo}"></td>
             <td th:text="${car.potencia}"></td>
             <td>
-                <a class="btn-small" th:href="@{'/editar/' + ${car.id}}">Editar</a>
-                <a class="btn-small danger" th:href="@{'/excluir/' + ${car.id}}">Excluir</a>
+                <a class="btn-small danger" th:href="@{'/editar-carro/' + ${car.id}}">Editar</a>
+                <a class="btn-small danger" th:href="@{'/excluir-carro/' + ${car.id}}">Excluir</a>
             </td>
         </tr>
         </tbody>
