@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Carro</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Cadastrar Novo Carro</h1>
+    <form action="#" th:action="@{/cadastro}" th:object="${car}" method="post">
+        <label for="ano">Ano:</label>
+        <input type="text" id="ano" th:field="*{ano}" required />
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" th:field="*{modelo}" required />
+
+        <label for="potencia">Potência:</label>
+        <input type="text" id="potencia" th:field="*{potencia}" required />
+
+        <button class="btn" type="submit">Salvar</button>
+        <a class="btn" href="/carros">Voltar</a>
+    </form>
+</div>
+</body>
+</html>

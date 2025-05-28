@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Carro</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Editar Carro</h1>
+    <form th:action="@{'/editar/' + ${car.id}}" th:object="${car}" method="post">
+        <label for="ano">Ano:</label>
+        <input type="text" id="ano" th:field="*{ano}" required />
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" th:field="*{modelo}" required />
+
+        <label for="potencia">Potência:</label>
+        <input type="text" id="potencia" th:field="*{potencia}" required />
+
+        <button class="btn" type="submit">Salvar Alterações</button>
+        <a class="btn" href="/carros">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
